@@ -16,9 +16,44 @@
         },
       };
     </script>
+    <script src="/tailwind.config.js"></script>
+    <script
+      src="https://kit.fontawesome.com/159db6d9fb.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
     <title>Etch-A-Sketch</title>
   </head>
-  <body>
-    <div class="text-red-500">Hello</div>
+  <body class="bg-[#ededed]">
+    <header
+      class="header flex justify-center text-[#222831] text-6xl font-mono py-10 w-full h-auto"
+      style="font-family: 'Press Start 2P'"
+    >
+      <h1>ETCH-A-SKETCH</h1>
+    </header>
+
+    <main class="grid justify-center">
+      <div class="btn-container flex justify-center space-x-40 w-[640px] mx-10">
+        <button class="border border-black rounded-md w-32" id="btn-color">
+          Color
+        </button>
+        <button class="border border-black rounded-md w-32" id="btn-rainbow">
+          Rainbow
+        </button>
+        <button class="border border-black rounded-md w-32" id="btn-clear">
+          Clear
+        </button>
+      </div>
+      <div
+        class="grid-container grid justify-center m-10 w-[640px] h-[640px] shadow-xl bg-white"
+      ></div>
+    </main>
   </body>
+
+  <script src="/script.js"></script>
 </html>
