@@ -38,7 +38,18 @@
     </header>
 
     <main class="grid justify-center">
-      <div class="btn-container flex justify-center space-x-40 w-[640px] mx-10">
+      <div class="btn-container flex justify-center space-x-10 w-auto mx-10">
+        <div class="slidecontainer flex space-x-5">
+          <input
+            type="range"
+            min="2"
+            max="64"
+            value="16"
+            class="slider"
+            id="myRange"
+          />
+          <p class="w-10" id="sliderDisplay">0</p>
+        </div>
         <button class="border border-black rounded-md w-32" id="btn-color">
           Color
         </button>
@@ -49,9 +60,11 @@
           Clear
         </button>
       </div>
-      <div
-        class="grid-container grid justify-center m-10 w-[640px] h-[640px] shadow-xl bg-white"
-      ></div>
+      <div class="grid justify-center w-auto">
+        <div
+          class="grid-container grid justify-center m-10 w-[640px] h-[640px] shadow-xl bg-white"
+        ></div>
+      </div>
     </main>
   </body>
 
