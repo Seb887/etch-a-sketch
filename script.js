@@ -11,7 +11,7 @@ const btnRainbow = document.querySelector('#btn-rainbow');
 const btnClear = document.querySelector('#btn-clear');
 
 // Defaults
-const defaultGridSize = 16;
+const defaultGridSize = 64;
 const defaultColor = 'black';
 
 // Setup Grid
@@ -23,13 +23,15 @@ function setupGrid(gridSize) {
   for (let i = 0; i < gridSize * gridSize; i++) {
     let gridElement = document.createElement('div');
     gridElement.classList.add('grid-element', 'border');
+    gridElement.addEventListener('mouseover', () => changeColorGrid());
+    gridElement.addEventListener('mousedown', () => changeColorGrid());
     gridContainer.append(gridElement);
   }
 
   updateSliderDisplay();
 }
 
-setupGrid(slider.value);
+setupGrid(defaultGridSize);
 
 function updateSliderDisplay() {
   sliderDisplay.textContent = slider.value;
@@ -78,7 +80,7 @@ function changeColorGrid(element) {
 }
 
 gridElements.forEach((element) => {
-  element.addEventListener('mouseover', (e) => changeColorGrid(e.target));
+  element.addEventListener('click', () => setupGrid());
 });
 
 // Clear grid color
