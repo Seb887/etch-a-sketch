@@ -96,3 +96,4 @@ function clearGrid() {
 btnClear.addEventListener('click', clearGrid);
 
 // Slider grid size
+test
