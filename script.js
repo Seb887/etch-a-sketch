@@ -1,8 +1,8 @@
 'use strict';
 
 const DEFAULT_COLOR = '#333333';
-const DEFAULT_MODE = 'color';
-const DEFAULT_SIZE = 16;
+const DEFAULT_MODE = 'black';
+const DEFAULT_SIZE = 32;
 
 let currentColor = DEFAULT_COLOR;
 let currentMode = DEFAULT_MODE;
@@ -31,11 +31,17 @@ function reloadGrid() {
 }
 
 const gridContainer = document.querySelector('.grid-container');
-const colorBtn = document.querySelector('#btn-color');
-const rainbowBtn = document.querySelector('#btn-color');
+const blackBtn = document.querySelector('#btn-black');
+const rainbowBtn = document.querySelector('#btn-rainbow');
 const clearBtn = document.querySelector('#btn-clear');
+const slider = document.querySelector('#myRange');
+const sliderDisplay = document.querySelector('#sliderDisplay');
 
+blackBtn.onclick = () => setCurrentMode('black');
+rainbowBtn.onclick = () => setCurrentMode('rainbow');
 clearBtn.onclick = () => clearGrid();
+slider.onchange = () => reloadGrid();
+slider.onclick = () => setCurrentSize(slider.value);
 
 let mouseDown = false;
 document.body.onmousedown = () => (mouseDown = true);
@@ -52,18 +58,28 @@ function setupGrid(gridSize) {
     gridElement.addEventListener('mousedown', changeColor);
     gridContainer.appendChild(gridElement);
   }
+
+  refreshSliderValue();
 }
 
 function changeColor(e) {
   if (e.type === 'mouseover' && !mouseDown) return;
   if (currentMode === 'rainbow') {
+    console.log(currentMode);
     let randomR = Math.floor(Math.random() * 256);
     let randomG = Math.floor(Math.random() * 256);
     let randomB = Math.floor(Math.random() * 256);
-    e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomb})`;
-  } else if (currentMode === 'color') {
+    e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`;
+  } else if (currentMode === 'black') {
+    console.log(currentMode);
     e.target.style.backgroundColor = currentColor;
   }
 }
 
-setupGrid(currentSize);
+function refreshSliderValue() {
+  sliderDisplay.textContent = slider.value;
+}
+
+window.onload = () => {
+  setupGrid(currentSize);
+};
